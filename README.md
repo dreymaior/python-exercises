@@ -1,3 +1,3 @@
 ## Python Exercises
 
-These are some python pracc exercises based on [URI Online Judge Problems](https://www.urionlinejugde.com.br/)
+These are some python pracc exercises based on [URI Online Judge Problems](https://www.urionlinejudge.com.br/)
