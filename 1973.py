@@ -1,41 +1,36 @@
-def soma(lista):
-    retorno = 0
-    for i in lista:
-        retorno += i
-
-    return retorno
-
 # const
-PAR = 0
+IMPAR = 1
 
 n = int(input())
 
 linha = input()
 linha = linha.split(' ')
-carneiros = []
-estrelasAtacadas = []
+estrelas = {}
+estrelasAtacadas = 0
 carneirosNaoRoubados = 0
+estrela = []
 
 for i in range(n):
-    carneirosNaoRoubados += int(linha[i])
-    carneiros.append(int(linha[i]))
-    estrelasAtacadas.append(0)
+    carneiros = int(linha[i])
+    carneirosNaoRoubados += carneiros
+    estrelas.update({i : [carneiros, False]})
 
 proximaEstrela = 1
 
 while proximaEstrela > 0 and proximaEstrela <= n:
-    carneirosLocal = carneiros[proximaEstrela-1]
-    if carneiros[proximaEstrela-1] > 0:
-        estrelasAtacadas[proximaEstrela-1] = 1
-        carneiros[proximaEstrela-1] -= 1
+    estrela = estrelas.get(proximaEstrela-1)
+    carneiros = estrela[0]
+    if (not(estrela[1])):
+        estrela[1] = True
+        estrelasAtacadas += 1
+
+    if carneiros > 0:
+        estrela[0] -= 1
         carneirosNaoRoubados -= 1
 
-    if carneirosLocal%2 != PAR:
+    if carneiros%2 == IMPAR:
         proximaEstrela += 1
     else:
         proximaEstrela -= 1
 
-
-totalAtacadas = soma(estrelasAtacadas)
-
-print(totalAtacadas, carneirosNaoRoubados)
+print(estrelasAtacadas, carneirosNaoRoubados)
