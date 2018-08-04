@@ -4,16 +4,22 @@ IMPAR = 1
 n = int(input())
 
 linha = input()
-linha = linha.split(' ')
+
 estrelas = {}
 estrelasAtacadas = 0
 carneirosNaoRoubados = 0
 estrela = []
 
-for i in range(n):
-    carneiros = int(linha[i])
+for i in range(n-1):
+    espacoBranco = linha.find(' ')
+    carneiros = int(linha[:espacoBranco])
+    linha = linha[espacoBranco+1:]
     carneirosNaoRoubados += carneiros
     estrelas.update({i : [carneiros, False]})
+
+carneiros = int(linha)
+carneirosNaoRoubados += carneiros
+estrelas.update({n-1 : [carneiros, False]})
 
 proximaEstrela = 1
 
